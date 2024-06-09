@@ -1,0 +1,15 @@
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/CMakeFiles/uninstall.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/CMakeFiles/edit_cache.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/CMakeFiles/rebuild_cache.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/CMakeFiles/list_install_components.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/CMakeFiles/install.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/CMakeFiles/install/local.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/CMakeFiles/install/strip.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/src/CMakeFiles/glfw.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/src/CMakeFiles/update_mappings.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/src/CMakeFiles/edit_cache.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/src/CMakeFiles/rebuild_cache.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/src/CMakeFiles/list_install_components.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/src/CMakeFiles/install.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/src/CMakeFiles/install/local.dir
+/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/src/CMakeFiles/install/strip.dir
