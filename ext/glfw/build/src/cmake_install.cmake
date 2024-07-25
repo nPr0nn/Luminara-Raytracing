@@ -1,4 +1,4 @@
-# Install script for directory: /home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/src
+# Install script for directory: /home/lucas/p/cpp/gpu/projeto-final-cuda-raytracing-d/ext/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -37,12 +37,12 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set default install directory permissions.
+# Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/lucas/p/cpp/gpu/Luminara-Raytracing/ext/glfw/build/src/libglfw3.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/lucas/p/cpp/gpu/projeto-final-cuda-raytracing-d/ext/glfw/build/src/libglfw3.a")
 endif()
 
