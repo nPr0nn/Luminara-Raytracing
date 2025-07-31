@@ -1,86 +1,102 @@
 # Luminara-Raytracing
 
-## Documentação: 
+## Overview
 
-# Sistema de Raytracing
-
-Este é um exemplo básico de implementação de um sistema de traçado de raios utilizando C++ e CUDA. O sistema renderiza uma cena simples contendo esferas e triângulos com diferentes materiais.
-
-## Estrutura do Projeto
-
-O projeto consiste nos seguintes arquivos principais:
-
-### Os arquivos `main.cpp` e `main.cu`
-
-Este é o arquivo principal que configura a cena, cria a câmera e executa o traçado de raios para cada pixel da imagem final.
-
-### O diretório `utils` contém `utils.h`, `types.h` e `logs.h`
-
-Contêm funções utilitárias, como operações matemáticas, geração de números aleatórios e macros úteis para facilitar o desenvolvimento.
-
-### O diretório `Window`
-
-Contém funções e classes para criar e gerenciar uma janela com GLFW e usar OpenGL para renderizar a texturar do raytracing, assim mostrando ao usuário o resultado do código.
-
-### O diretório `raytracing/geometry`
-
-Este diretório contém as classes e funções relacionadas à geometria:
-
-- **`vec3.h`**: Define a classe `vec3` para representação e operações vetoriais 3D.
-- **`ray.h`**: Define a classe `ray` para representar um raio no espaço.
-
-
-### O diretório `raytracing/objects`
-
-- **`hittable.h`**: Contêm as classes e estruturas que definem os objetos "hittables" na cena (objetos que podem ser atingidos por raios)
-- **`triangle.h`**: Define a classe `triangle` que herda de `hittable` e representa um triângulo com funcionalidade de interseção usando o algoritmo de Möller-Trumbore.
-- **`sphere.h`**: Define a classe `sphere` que herda de `hittable` e representa uma esfera com funcionalidade de interseção usando a fórmula matemática padrão.
-
-
-### O arquivo `materials.h`
-
-Este arquivo contém as classes relacionadas aos materiais aplicados às superfícies:
-
-- **`material.h`**: Define a classe base `material` e as classes `lambertian`, `metal` e `dielectric` com método virtual `scatter` para determinar o comportamento do raio ao atingir uma superfície.
-- **`lambertian`**: Classe `lambertian`, um tipo de material difuso que espalha a luz de forma uniforme.
-- **`metal`**: Classe `metal`, que representa um material metálico refletivo.
-- **`dielectric`**: Classe `dielectric`, que representa um material dielétrico transparente (como vidro) com cálculos de reflexão e refração usando a fórmula de Fresnel.
-
-### O arquivo `camera.h`
-
-Define a classe Camera que representa a câmera usada para renderizar a cena:
-- Camera: Configura a posição, orientação e campo de visão da câmera, além de gerar raios para cada pixel da imagem.
-
-### Os arquivos `worlds.h` e `worlds_cuda.cu` 
-
-Definem os objetos de cada cena (esferas e triângulos), no momento temos 2 cenas prontas:
-- simple_world
-- book_cover_world
-
-## Funcionamento
-
-1. **Inicialização da Cena**: No arquivo `main.cpp`, os objetos da cena (esferas e triângulos) são inicializados com suas posições, tamanhos e materiais.
-
-2. **Traçado de Raios**: Para cada pixel na imagem final, um raio é lançado da câmera através da cena. O raio é testado para interseções com todos os objetos da cena (esferas e triângulos).
-
-3. **Cálculo da Iluminação**: Quando um raio atinge um objeto, dependendo do material do objeto, o raio pode ser disperso (difuso), refletido (metálico) ou refratado (dielétrico). A cor resultante é calculada com base na reflexão da luz, sombras e iluminação ambiente.
-
-4. **Acúmulo e Renderização**: As cores calculadas para cada pixel são acumuladas para formar a imagem final, que é então exibida na tela ou salva em um arquivo de imagem.
-
-## Compilação e Execução
-
-Para compilar e executar o projeto olhe o arquivo Makefile 
-
-- Versão de CPU: make render 
-- Versão de GPU (CUDA): make render_cuda
-- Perfilamento: maker profile_render_cuda
+Luminara-Raytracing is a basic ray tracing system implemented in C++ and CUDA following the book [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html). It renders simple scenes composed of spheres and triangles with different materials, demonstrating fundamental ray tracing techniques including geometry intersection, material shading, and GPU acceleration.
 
 ---
 
-Este README.md fornece uma visão geral dos componentes e funcionamento do sistema de raytracing implementado nos arquivos fornecidos. Ele serve como um guia inicial para entender como os diferentes elementos se unem para criar uma cena renderizada usando técnicas de traçado de raios simples.
+## Project Structure
 
+### Main Files
 
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/IwHO6ydp)
+* **`main.cpp` / `main.cu`**
+  Entry points that set up the scene, camera, and perform ray tracing to compute the final image pixels.
 
+### Utilities (`utils/`)
 
+* **`utils.h`**, **`types.h`**, **`logs.h`**
+  Helper functions and macros for math operations, random number generation, and logging.
 
+### Window Management (`Window/`)
+
+* Implements GLFW-based window creation and OpenGL-based texture rendering to display ray traced images in real-time.
+
+### Geometry (`raytracing/geometry/`)
+
+* **`vec3.h`**: 3D vector class with associated operations.
+* **`ray.h`**: Ray class representing rays in 3D space.
+
+### Scene Objects (`raytracing/objects/`)
+
+* **`hittable.h`**: Abstract base for scene objects that rays can intersect.
+* **`triangle.h`**: Triangle class inheriting from hittable, using the Möller-Trumbore intersection algorithm.
+* **`sphere.h`**: Sphere class inheriting from hittable, with standard sphere intersection logic.
+
+### Materials (`materials.h`)
+
+Defines material models that describe how rays interact with surfaces:
+
+* **`material.h`**: Abstract base class defining a virtual `scatter` method.
+* **`lambertian`**: Diffuse material scattering light uniformly.
+* **`metal`**: Reflective metallic surface.
+* **`dielectric`**: Transparent dielectric material (e.g., glass) with Fresnel reflection/refraction.
+
+### Camera (`camera.h`)
+
+Defines the `Camera` class, responsible for setting camera position, orientation, field of view, and generating rays for each pixel.
+
+### Worlds (`worlds.h`, `worlds_cuda.cu`)
+
+Scene definitions including object placement and material assignment. Includes predefined scenes:
+
+* `simple_world`
+* `book_cover_world`
+
+---
+
+## How It Works
+
+1. **Scene Initialization**
+   Objects (spheres and triangles) are instantiated with their geometry, position, size, and material properties.
+
+2. **Ray Tracing**
+   Rays are cast from the camera through each pixel. Each ray is tested for intersections with scene objects.
+
+3. **Lighting Calculation**
+   Upon intersection, rays interact with materials, which scatter, reflect, or refract them according to their type, determining pixel colors based on light transport.
+
+4. **Accumulation and Display**
+   Color results are accumulated per pixel to build the final rendered image, displayed via OpenGL or saved to disk.
+
+---
+
+## Build & Run Instructions
+
+Use the included `Makefile` to build and execute the project:
+
+* CPU version:
+
+  ```bash
+  make render
+  ```
+
+* GPU version with CUDA:
+
+  ```bash
+  make render_cuda
+  ```
+
+* Profiling GPU version:
+
+  ```bash
+  make profile_render_cuda
+  ```
+
+---
+
+## Gallery
+
+![Results 1](gallery/results1.png)
+
+![Simple World](gallery/simple_world.png)
