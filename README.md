@@ -100,3 +100,7 @@ Use the included `Makefile` to build and execute the project:
 ![Results 1](gallery/results1.png)
 
 ![Simple World](gallery/simple_world.png)
+
+![Nice](gallery/raytraced_image.png)
+
+
