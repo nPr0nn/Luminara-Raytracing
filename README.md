@@ -75,6 +75,12 @@ Scene definitions including object placement and material assignment. Includes p
 
 Use the included `Makefile` to build and execute the project:
 
+* glfw build:
+
+  ```bash
+  make glfw
+  ```
+
 * CPU version:
 
   ```bash
